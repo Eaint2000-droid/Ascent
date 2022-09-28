@@ -1,0 +1,28 @@
+.banner{
+    height: 200px;
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    background-color: rgba(239, 247, 248, 0.945);
+}
+
+.bannerButton{
+    top:130px;
+    left:110px;
+    width: 115px;
+    height: 47px;
+    border-radius: 35px;
+    padding: "18px 36px";
+    font-size: 18px;
+    background-color: #20333c;
+    color:#fefefe;
+    position:absolute;
+}
+
+.bannerImg{
+    top:0px;
+    left:630px;
+    max-height: 200px;
+    position:absolute;
+}

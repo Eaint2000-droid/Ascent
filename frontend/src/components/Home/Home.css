@@ -1,0 +1,128 @@
+.MainDash {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+}
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  flex: 0.4;
+  /* width:100px;   */
+  /* background-color:red; */
+}
+.hi-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  /* width:450px; */
+  height: 500px;
+  border-radius: 50px;
+  margin: 85px auto 0;
+  margin-left: 60px;
+}
+.hi-prev,
+.hi-next {
+  position: absolute;
+  top: 40%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  border-radius: 50px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+  background-color: pink;
+  color: white;
+  transition: all 0.7s;
+  font-size: 20px;
+  font-weight: bold;
+}
+.hi-slide .hi-next:hover,
+.hi-slide .hi-prev:hover {
+  opacity: 1;
+  background-color: pink;
+}
+.hi-prev {
+  left: -69px;
+}
+.hi-prev::before {
+  content: "<";
+}
+.hi-next {
+  right: -69px;
+}
+.hi-next::before {
+  content: ">";
+}
+.parentContainer {
+  align-items: center;
+  display: flex;
+}
+
+.CreditCards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+  flex: 0.58;
+}
+
+@media screen and (max-width: 1200px) {
+  .MainDash {
+    justify-content: flex-start;
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .MainDash {
+    align-items: center;
+  }
+}
+
+.slide img {
+  width: 20rem;
+  margin: 0 auto;
+}
+
+.slide {
+  transform: scale(0.2);
+  transition: transform 300ms;
+  opacity: 0.5;
+}
+
+.activeSlide {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.arrow {
+  background-color: #fff;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow svg {
+  transition: color 300ms;
+}
+
+.arrow svg:hover {
+  color: #68edff;
+}
+
+.next {
+  right: 0%;
+  top: 50%;
+}
+
+.prev {
+  left: 0%;
+  top: 50%;
+}
