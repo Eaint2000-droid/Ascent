@@ -19,6 +19,20 @@ Showcase rewards accrued by users in the form of cashback, miles, and points in 
 
 
 ## Running the application (frontend)
-1) Run `npm install` in `/initial-app/frontend` to install the dependencies.
-2) Run `npm run dev` in `/initial-app/frontend` to run the frontend in development mode.
-3) Open [http://localhost:5137](http://localhost:5137) to view it in your browser.
+
+### Pre-requisites
+Please ensure that you have Node v14+ installed in your machine before running the application locally.
+
+### Steps to run the application for development
+
+```bash
+cd /initial-app/frontend
+
+# This command installs the required packages and dependencies for the application
+npm install
+
+# This command runs the frontend of the application in development mode.
+npm run dev
+```
+
+Once the above commands have been run, please open [http://localhost:5137](http://localhost:5137) to view the application in your browser.
