@@ -19,5 +19,6 @@ Showcase rewards accrued by users in the form of cashback, miles, and points in 
 
 
 ## Running the application (frontend)
-Running `npm run dev` in `/initial-app/frontend` runs the frontend in development mode.\
-Open [http://localhost:5137](http://localhost:5137) to view it in your browser.
+1) Run `npm install` in `/initial-app/frontend` to install the dependencies.
+2) Run `npm run dev` in `/initial-app/frontend` runs the frontend in development mode.\
+3) Open [http://localhost:5137](http://localhost:5137) to view it in your browser.
