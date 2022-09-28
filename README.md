@@ -9,8 +9,8 @@ Flexibly launch and manage marketing campaigns
 Showcase rewards accrued by users in the form of cashback, miles, and points in relation to their spending 
 
 ## Screenshots
-![](screenshots/Ascent_home.PNG)
-![](screenshots/Ascent_dashboard.PNG)
+<img src="screenshots/Ascent_home.PNG" max-width="50%">
+<img src="screenshots/Ascent_dashboard.PNG" max-width="50%">
 
 ## Running the application (frontend)
 Running `npm run dev` in the frontend folder runs the frontend in the development mode.\
