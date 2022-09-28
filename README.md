@@ -15,6 +15,9 @@ Showcase rewards accrued by users in the form of cashback, miles, and points in 
   <img src="initial-app/screenshots/Ascent_dashboard.PNG" width="500">
 </p>
 
+<img src="initial-app/screenshots/ascent.gif" width="500">
+
+
 ## Running the application (frontend)
 Running `npm run dev` in `/initial-app/frontend` runs the frontend in the development mode.\
 Open [http://localhost:5137](http://localhost:5137) to view it in your browser.
