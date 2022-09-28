@@ -11,7 +11,7 @@ Showcase rewards accrued by users in the form of cashback, miles, and points in 
 ## Screenshots
 
 <p float="left">
-  <img src="intial-app/screenshots/Ascent_home.PNG" width="500">
+  <img src="initial-app/screenshots/Ascent_home.PNG" width="500">
   <img src="initial-app/screenshots/Ascent_dashboard.PNG" width="500">
 </p>
 
