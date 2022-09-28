@@ -1,6 +1,16 @@
-# Project
-This repository contains your submissions for the project.
+# Ascent
 
-Note that this repo is writable by you. Any changes you or your team members made in this repo can be pushed to origin.
+## Overview
+With heightened expectations from digital natives today who would take their business elsewhere if unsatisfied, it has become more important than ever for businesses to utilise loyalty programs to increase customer retention. 
 
-If you have changes or discover issues, you can also create an issue.
+*Ascenda Loyalty* aims to provide banks with a loyalty points processing platform for their customers across a variety of card programs. Our solution, **Ascent**, allows banks and merchants to
+Process millions of transactions with specific spending rules for different card types taken into consideration 
+Flexibly launch and manage marketing campaigns
+Showcase rewards accrued by users in the form of cashback, miles, and points in relation to their spending 
+
+## Screenshots
+
+
+## Running the application (frontend)
+Running `npm run dev` in the frontend folder runs the frontend in the development mode.\
+Open [http://localhost:5137](http://localhost:5137) to view it in your browser.
