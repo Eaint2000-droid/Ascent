@@ -16,5 +16,5 @@ Showcase rewards accrued by users in the form of cashback, miles, and points in 
 </p>
 
 ## Running the application (frontend)
-Running `npm run dev` in the frontend folder runs the frontend in the development mode.\
+Running `npm run dev` in `/initial-app/frontend` runs the frontend in the development mode.\
 Open [http://localhost:5137](http://localhost:5137) to view it in your browser.
