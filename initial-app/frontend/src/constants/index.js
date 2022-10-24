@@ -10,8 +10,8 @@ export const navLinks = [
     title: "Campaigns",
   },
   {
-    id: "/",
-    title: "Logout"
+    id: "/login",
+    title: "Login"
   }
 ];
 

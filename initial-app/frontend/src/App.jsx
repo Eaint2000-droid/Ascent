@@ -23,9 +23,10 @@ Amplify.configure(awsExports);
 const routes = (
   <Routes>
     <Route path="/" element={<Landing/>} exact/>
-    <Route path="/home" element={<Home/>} exact/>
+    {/* <Route path="/home" element={<Home/>} exact/>
     <Route path="/campaignsform" element={<CreateCampaigns/>} exact/>
-    <Route path="/campaigns" element={<BanksHome/>} exact/>
+    <Route path="/campaigns" element={<BanksHome/>} exact/> */}
+    <Route path="/login" element={<AmplifyAuthenticator/>} exact/>
   </Routes>
 )
 
@@ -44,13 +45,13 @@ const App = () => {
   //check if the user is valid and logged in
   return authState === AuthState.SignedIn && user ? (
       <div className="app">
-     <Router>
-      <main>{routes}</main>
-    </Router>
+      <Home/>
     </div>
     ) : (
       <div className="bg">
-        <AmplifyAuthenticator/>
+        <Router>
+      <main>{routes}</main>
+    </Router>
       </div>
     );
 }
