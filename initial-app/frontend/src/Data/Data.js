@@ -45,13 +45,13 @@ import {
   export const cardsData = [
     {
       id:0,
-      title: "Shopping & Rewards",
+      title: "Points",
       color: {
         backGround: "linear-gradient(180deg, #bb67ff 0%, #c484f3 100%)",
         // boxShadow: "0px 10px 20px 0px #e0c6f5",
       },
       barValue: 70,
-      value: "$25,970",
+      value: "25,970 Points",
       png: UilUsdSquare,
       series: [
         {
@@ -68,7 +68,7 @@ import {
         // boxShadow: "0px 10px 20px 0px #FDC0C7",
       },
       barValue: 80,
-      value: "4,270 Points",
+      value: "$4,270",
       png: UilMoneyWithdrawal,
       series: [
         {

@@ -1,5 +1,5 @@
 .MuiTableRow-root > * {
-    padding: 10px;
+    padding: 5px;
   }
   
   .MuiTableRow-root.MuiTableRow-head > * {
@@ -12,14 +12,14 @@
     border:none !important;
   }
 
-  .Table tr:nth-child(even) {
+  /* .Table tr:nth-child(even) {
       background-color:#eeee;
-  }
+  } */
   
   .Table:first-child {
     border-radius: 1.0rem !important;
   }
-  .status {
+  .points {
     padding: 8px;
     border-radius: 9px;
   }

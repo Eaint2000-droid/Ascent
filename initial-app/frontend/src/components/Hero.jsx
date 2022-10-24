@@ -1,4 +1,4 @@
-import styles from "./style";
+import styles, { layout } from "./style";
 import discount from "../assets/Discount.svg"
 import robot from "../assets/robot.png"
 import GetStarted from "./GetStarted";
@@ -6,7 +6,7 @@ import GetStarted from "./GetStarted";
 const Hero = () => {
   return (
     <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
-      <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-20 px-6`}>
+      <div className={`flex-1 flex justify-center items-start flex-col xl:px-0 sm:px-20 px-6`}>
         {/* <div className="flex flex-row items-center py-[6px] px-4 bg-discount-gradient rounded-[10px] mb-2">
           <img src={discount} alt="discount" className="w-[32px] h-[32px]" />
           <p className={`${styles.paragraph} ml-2`}>
@@ -14,9 +14,9 @@ const Hero = () => {
             <span className="text-white">1 Month</span> Account
           </p>
         </div> */}
-
+     
         <div className="flex flex-row justify-between items-center w-full max-w-[650px]">
-          <h1 className="flex-1 font-poppins font-semibold ss:text-[62px] text-[52px] text-black ss:leading-[90.8px] leading-[75px]">
+          <h1 className="flex-1 font-poppins font-semibold ss:text-[62px] text-[52px] text-start ml-20 text-black ss:leading-[90.8px] leading-[75px]">
             The Next <br className="sm:block hidden" />{" "}
             <span className="text-gradient">Generation</span>{" "}
           </h1>
@@ -24,11 +24,11 @@ const Hero = () => {
             <GetStarted />
           </div>
         </div>
-
-        <h1 className="font-poppins font-semibold ss:text-[60px] text-[62px] text-black ss:leading-[90.8px] leading-[75px] w-full">
+        
+        <h1 className="font-poppins font-semibold ss:text-[60px] text-[62px] text-start ml-20 text-black ss:leading-[90.8px] leading-[75px] w-full" style={{alignItems:'flex-start'}}>
           Transaction Processing platform.
         </h1>
-        <p className={`${styles.paragraph} max-w-[590px] mt-5`}>
+        <p className={`${styles.paragraph} max-w-[590px] mt-5 ml-20`} >
           We allow you to process millions of transaction data, flexibly manage new campaigns & 
           view transactions & card information
           across a variety of card types.

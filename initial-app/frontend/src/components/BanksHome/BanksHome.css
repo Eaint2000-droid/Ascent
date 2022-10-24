@@ -1,0 +1,26 @@
+.topcontainer{
+    height:250px;
+    width:100%;
+    background-color:rgba(239, 247, 248, 0.945);
+    overflow:hidden;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+}
+title{
+    display:flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:center;
+}
+img{
+    margin-left:80px;
+    /* width:360px;
+    max-height: 200px; */
+    /* object-fit: cover; */
+}
+button{
+    background-color:blue;
+    justify-content:flex-start;
+}

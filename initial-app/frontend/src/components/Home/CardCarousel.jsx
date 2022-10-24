@@ -6,8 +6,14 @@ import cardTwo from "../../assets/ccc.png";
 import cardThree from "../../assets/ccc.png";
 import cardFour from "../../assets/ccc.png";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import Card from "./Card";
 
 const images = [cardOne, cardTwo, cardThree, cardFour];
+const cardInfo = [['SCIS Freedom','**** **** **** 5678','SCIS Bank','Fabiana','03/23'],
+                  ['SCIS Shopping','**** **** **** 1234','SCIS Bank','Fabiana','05/27'],
+                  ['SCIS PlatinumMiles','**** **** **** 1234','SCIS Bank','Fabiana','03/25'],
+                  ['SCIS PremiumMiles','**** **** **** 6878','SCIS Bank','Fabiana','03/22'],
+                ];
 
 export default function CardCarousel() {
   const NextArrow = ({ onClick }) => {
@@ -46,6 +52,7 @@ export default function CardCarousel() {
             {images.map((img, idx) => (
               <div className={idx === imageIndex ? "slide activeSlide" : "slide"}>
                 <img src={img} alt={img} />
+               
               </div>
             ))}
           </Slider>
@@ -59,15 +66,15 @@ export default function CardCarousel() {
           <div className="infoRow">
               <div className="firstCell">
                 <h4 className="infoText">SCIS Type</h4>
-                <h4 className="detailText">SCIS Freedom</h4>
+                <h4 className="detailText">{cardInfo[imageIndex][0]}</h4>
               </div>
               <div className="infoCell">
                 <h4 className="infoText">Card Number</h4>
-                <h4 className="detailText">**** **** **** 1234</h4>
+                <h4 className="detailText">{cardInfo[imageIndex][1]}</h4>
               </div>
               <div className="infoCell">
                 <h4 className="infoText">Bank</h4>
-                <h4 className="detailText">SCIS Bank</h4>
+                <h4 className="detailText">{cardInfo[imageIndex][2]}</h4>
               </div>
           </div>
 
@@ -75,11 +82,11 @@ export default function CardCarousel() {
           <div className="infoRow">
               <div className="firstCell">
                 <h4 className="infoText">Name</h4>
-                <h4 className="detailText">Fabiana</h4>
+                <h4 className="detailText">{cardInfo[imageIndex][3]}</h4>
               </div>
               <div className="infoCell">
                 <h4 className="infoText">Valid thru</h4>
-                <h4 className="detailText">03/22</h4>
+                <h4 className="detailText">{cardInfo[imageIndex][4]}</h4>
               </div>
           </div>
         </div>

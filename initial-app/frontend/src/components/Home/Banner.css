@@ -21,8 +21,9 @@
 }
 
 .bannerImg{
-    top:0px;
-    left:630px;
+    left:550px;
+    bottom:0px;
     max-height: 200px;
+    max-width: 300px;
     position:absolute;
 }

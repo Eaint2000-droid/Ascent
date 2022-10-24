@@ -1,8 +1,12 @@
 .MainDash {
-  padding: 2.5rem;
+  padding: 0.7rem 2.5rem;
   display: flex;
-  flex-direction: row;
-  /* justify-content: space-evenly; */
+  flex-direction: column;
+  overflow:hidden;
+}
+.DashboardInfo {
+  display:flex;
+  
 }
 .leftSide {
   display: flex;
