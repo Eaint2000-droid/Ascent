@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { close, logo, menu } from "../assets";
 import { navLinks } from "../constants";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
-
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('CognitoIdentityServiceProvider.7ql6fvvn5p714kjp7rfoea9kqp.qwerty.userData')));
+  console.log(user);
+  useEffect(() => {
+      setUser(JSON.parse(localStorage.getItem('CognitoIdentityServiceProvider.7ql6fvvn5p714kjp7rfoea9kqp.qwerty.userData')));
+   
+  },[user])
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-      {/* <img src={logo} alt="hoobank" className="w-[124px] h-[32px]" /> */}
-
+    {user?.result? (
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
@@ -23,6 +27,14 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+      ):(
+        <li
+            
+          >
+            <a href='/login'>Login</a>
+          </li>
+      )
+    }
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img
@@ -37,7 +49,7 @@ const Navbar = () => {
             !toggle ? "hidden" : "flex"
           } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
         >
-          <ul className="list-none flex justify-end items-start flex-1 flex-col">
+          {/* <ul className="list-none flex justify-end items-start flex-1 flex-col">
             {navLinks.map((nav, index) => (
               <li
                 key={nav.id}
@@ -49,7 +61,7 @@ const Navbar = () => {
                 <a href={`#${nav.id}`}>{nav.title}</a>
               </li>
             ))}
-          </ul>
+          </ul> */}
         </div>
       </div>
     </nav>
