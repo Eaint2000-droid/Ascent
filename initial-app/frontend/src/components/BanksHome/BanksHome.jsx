@@ -45,13 +45,16 @@ export default function BanksHome() {
         </div>
 
         <Grid className={classes.bottomcontainer} container alignItems="stretch" spacing={3}>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} sm={3}>
             <Campaign campaign={initialData}/>
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} sm={3}>
             <Campaign campaign={initialData}/>
         </Grid>
-        <Grid item xs={12} sm={2}>
+        <Grid item xs={12} sm={3}>
+            <Campaign campaign={initialData}/>
+        </Grid>
+        <Grid item xs={12} sm={3}>
             <Campaign campaign={initialData}/>
         </Grid>
           {/* {partners.map((partner) => (

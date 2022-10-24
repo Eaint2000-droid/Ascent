@@ -6,6 +6,8 @@ export default makeStyles({
         alignItems:'center',
         justifyContent:'center',
         marginTop:50,
+        marginLeft:40,
+      
     },
   media: {
     height: 0,
