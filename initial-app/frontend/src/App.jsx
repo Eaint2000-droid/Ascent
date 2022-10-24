@@ -1,4 +1,5 @@
-import React from 'react'
+import React from "react";
+import { useState, useEffect} from "react";
 import Navbar from './components/Navbar'
 import Landing from './components/Landing'
 import Home from './components/Home/Home'
@@ -12,6 +13,13 @@ import {
   Navigate,
 } from 'react-router-dom'
 
+
+import Amplify from "aws-amplify";import { AmplifyAuthenticator } from '@aws-amplify/ui-react';
+import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
+import awsExports from "./aws-exports";
+Amplify.configure(awsExports);
+
+
 const routes = (
   <Routes>
     <Route path="/" element={<Landing/>} exact/>
@@ -20,12 +28,31 @@ const routes = (
     <Route path="/campaigns" element={<BanksHome/>} exact/>
   </Routes>
 )
-const App = () =>  (
-    <div className="app">
+
+const App = () => {
+  const [authState, setAuthState] = useState();
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    return onAuthUIStateChange((nextAuthState, authData) => {
+      setAuthState(nextAuthState);
+      setUser(authData);
+    });
+  });
+
+  //check if the user is valid and logged in
+  return authState === AuthState.SignedIn && user ? (
+      <div className="app">
      <Router>
       <main>{routes}</main>
     </Router>
     </div>
-  );
+    ) : (
+      <div className="bg">
+        <AmplifyAuthenticator/>
+      </div>
+    );
+}
 
-export default App
+export default App;
+

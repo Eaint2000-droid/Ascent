@@ -25,7 +25,7 @@ const Hero = () => {
           </div>
         </div>
         
-        <h1 className="font-poppins font-semibold ss:text-[60px] text-[62px] text-start ml-20 text-black ss:leading-[90.8px] leading-[75px] w-full" style={{alignItems:'flex-start'}}>
+        <h1 className="font-poppins font-semibold ss:text-[60px] text-[62px] text-start ml-20 mt-0 text-black ss:leading-[90.8px] leading-[75px] w-full" style={{alignItems:'flex-start'}}>
           Transaction Processing platform.
         </h1>
         <p className={`${styles.paragraph} max-w-[590px] mt-5 ml-20`} >
