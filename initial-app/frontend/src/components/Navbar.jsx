@@ -28,11 +28,11 @@ const Navbar = () => {
         ))}
       </ul>
       ):(
-        <li
-            
-          >
+        <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+        <li className={`font-poppins font-normal cursor-pointer text-[16px] `}>
             <a href='/login'>Login</a>
-          </li>
+        </li>
+        </ul>
       )
     }
 
