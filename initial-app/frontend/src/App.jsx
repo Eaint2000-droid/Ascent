@@ -23,9 +23,9 @@ Amplify.configure(awsExports);
 const routes = (
   <Routes>
     <Route path="/" element={<Landing/>} exact/>
-    {/* <Route path="/home" element={<Home/>} exact/>
+    <Route path="/home" element={<Home/>} exact/>
     <Route path="/campaignsform" element={<CreateCampaigns/>} exact/>
-    <Route path="/campaigns" element={<BanksHome/>} exact/> */}
+    <Route path="/campaigns" element={<BanksHome/>} exact/>
     <Route path="/login" element={<AmplifyAuthenticator/>} exact/>
   </Routes>
 )
