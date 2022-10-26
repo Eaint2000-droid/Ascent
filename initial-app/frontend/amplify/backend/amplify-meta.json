@@ -40,7 +40,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-frontedg3t5-dev-180409-deployment/amplify-cfn-templates/auth/frontedg3t5bb780f16-cloudformation-template.json",
         "logicalId": "authfrontedg3t5bb780f16"
       },
-      "lastPushTimeStamp": "2022-10-24T10:11:00.399Z",
+      "lastPushTimeStamp": "2022-10-26T04:51:05.667Z",
       "output": {
         "UserPoolId": "ap-southeast-1_CgAIbekPw",
         "AppClientIDWeb": "4eid9s9q0khtii45ko77b20ijt",
