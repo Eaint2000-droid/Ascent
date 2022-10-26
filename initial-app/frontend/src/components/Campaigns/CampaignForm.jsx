@@ -43,7 +43,7 @@ export default function CampaignForm( {currentId, setCurrentId}) {
      
         const startDateString = days[setStartDate.getDay()] + ', ' +  months[setStartDate.getMonth()] + ' ' + (setStartDate.getDay() + 1) + ' ' +  setStartDate.getFullYear() + ", " + (setStartDate.getHours() % 13) + ':' + setStartDate.getMinutes() + ' ' + AM_PM;
 
-        setCampaignData({ ...campaignData, startDate:startDateString })
+        setCampaignData({ ...campaignData, startDate:event.target.value })
     }
 
     const handleEndDateChange = (event) => {
@@ -56,7 +56,7 @@ export default function CampaignForm( {currentId, setCurrentId}) {
        
         const endDateString = days[setEndDate.getDay()] + ', ' +  months[setEndDate.getMonth()] + ' ' + (setEndDate.getDay() + 1) + ' ' +  setEndDate.getFullYear() + ", " + (setEndDate.getHours() % 13) + ':' + setEndDate.getMinutes() + ' ' + AM_PM;
 
-        setCampaignData({ ...campaignData, endDate: endDateString })
+        setCampaignData({ ...campaignData, endDate: event.target.value })
     }
     const clear = () => {
       setCampaignData({ cardProgram: '', reward:'', rewardType:'', minSpend: '', selectedFile:'', 
@@ -107,17 +107,17 @@ export default function CampaignForm( {currentId, setCurrentId}) {
       <FormControl style={{width:550,fontWeight:500, fontSize:30, marginTop:6,marginBottom:6}} fullWidth variant="outlined" >
           <InputLabel>Select Card Program</InputLabel>
           <Select value={card} onChange={handleCardChange}>
-            <MenuItem value={'SCIS Freedom'}>SCIS Freedom</MenuItem>
-            <MenuItem value={'SCIS PlatinumMiles'}>SCIS PlatinumMiles</MenuItem>
-            <MenuItem value={'SCIS PremiumMiles'}>SCIS PremiumMiles</MenuItem>
-            <MenuItem value={'SCIS Shopping'}>SCIS Shopping</MenuItem>
+            <MenuItem value={'scis_freedom'}>SCIS Freedom</MenuItem>
+            <MenuItem value={'scis_platinummiles'}>SCIS PlatinumMiles</MenuItem>
+            <MenuItem value={'scis_premiummiles'}>SCIS PremiumMiles</MenuItem>
+            <MenuItem value={'scis_shopping'}>SCIS Shopping</MenuItem>
           </Select>
         </FormControl>
 
       <TextField name="merchant" InputLabelProps={{className: classes.input}} style={{width:550}}variant="outlined" label="Merchant associated with spending" fullWidth value={campaignData.merchant} onChange={(e) => setCampaignData({ ...campaignData, merchant: e.target.value })} />
 
       <div className={`${classes.flexRow}`}>
-      <TextField name="reward" InputLabelProps={{className: classes.input}} variant="outlined" label="Reward" fullWidth multiline value={campaignData.reward} onChange={(e) => setCampaignData({ ...campaignData, reward: e.target.value })} style={{width:100}} />
+      <TextField name="reward" InputLabelProps={{className: classes.input}} variant="outlined" label="Reward" fullWidth multiline value={campaignData.reward} onChange={(e) => setCampaignData({ ...campaignData, reward: parseInt(e.target.value) })} style={{width:100}} />
       <FormControl style={{width:210,fontWeight:500, fontSize:30, marginTop:9,marginBottom:6}} variant="outlined" >
           <InputLabel>Select Reward Type</InputLabel>
           <Select value={typereward} onChange={handleRewardTypeChange}>
@@ -129,10 +129,10 @@ export default function CampaignForm( {currentId, setCurrentId}) {
         <FormControl style={{width:210,fontWeight:500, fontSize:30, marginTop:9,marginBottom:6}} variant="outlined" >
           <InputLabel>Select Minimum Spend</InputLabel>
           <Select value={minimumspend} onChange={handleMinSpendChange}>
-            <MenuItem value={'$100'}>$100</MenuItem>
-            <MenuItem value={'$200'}>$200</MenuItem>
-            <MenuItem value={'$300'}>$300</MenuItem>
-            <MenuItem value={'$500'}>$500</MenuItem>
+            <MenuItem value={100}>$100</MenuItem>
+            <MenuItem value={200}>$200</MenuItem>
+            <MenuItem value={300}>$300</MenuItem>
+            <MenuItem value={500}>$500</MenuItem>
             <MenuItem value={'All Spend'}>All Spend</MenuItem>
           </Select>
         </FormControl>
