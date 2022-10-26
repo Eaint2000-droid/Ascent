@@ -1,0 +1,56 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-frontedg3t5-dev-180409-authRole",
+      "UnauthRoleArn": "arn:aws:iam::175297400738:role/amplify-frontedg3t5-dev-180409-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::175297400738:role/amplify-frontedg3t5-dev-180409-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-frontedg3t5-dev-180409-deployment",
+      "UnauthRoleName": "amplify-frontedg3t5-dev-180409-unauthRole",
+      "StackName": "amplify-frontedg3t5-dev-180409",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:175297400738:stack/amplify-frontedg3t5-dev-180409/35a3c5a0-5383-11ed-87e7-06748eeed332",
+      "AmplifyAppId": "d20xetvtrlg3lz"
+    }
+  },
+  "auth": {
+    "frontedg3t5bb780f16": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-frontedg3t5-dev-180409-deployment/amplify-cfn-templates/auth/frontedg3t5bb780f16-cloudformation-template.json",
+        "logicalId": "authfrontedg3t5bb780f16"
+      },
+      "lastPushTimeStamp": "2022-10-24T10:11:00.399Z",
+      "output": {
+        "UserPoolId": "ap-southeast-1_CgAIbekPw",
+        "AppClientIDWeb": "4eid9s9q0khtii45ko77b20ijt",
+        "AppClientID": "6mmbd87q7iv00336aqe0bnmt0r",
+        "IdentityPoolId": "ap-southeast-1:212341aa-9553-45bb-80d6-860c58bf3243",
+        "UserPoolArn": "arn:aws:cognito-idp:ap-southeast-1:175297400738:userpool/ap-southeast-1_CgAIbekPw",
+        "IdentityPoolName": "frontedg3t5bb780f16_identitypool_bb780f16__dev",
+        "UserPoolName": "frontedg3t5bb780f16_userpool_bb780f16"
+      },
+      "lastPushDirHash": "vbmSA/ORO2d0fSuJ6kevE7GL/to="
+    }
+  }
+}
