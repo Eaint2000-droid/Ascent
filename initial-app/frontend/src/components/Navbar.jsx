@@ -6,26 +6,32 @@ const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
   const [user, setUser] = useState(localStorage.getItem('CognitoIdentityServiceProvider.4eid9s9q0khtii45ko77b20ijt.LastAuthUser'));
+  const [userRole, setUserRole] = useState(localStorage.getItem('role'));
   console.log(user);
   useEffect(() => {
       setUser(localStorage.getItem('CognitoIdentityServiceProvider.4eid9s9q0khtii45ko77b20ijt.LastAuthUser'));
+      setUserRole(localStorage.getItem('role'));
    
   },[user])
   return (
     <nav className="w-full flex py-6 justify-between items-center navbar">
-    {user? (
+    {userRole === 'Banks'? (
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
-        {navLinks.map((nav, index) => (
-          <li
-            key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] ${
-              active === nav.title ? "text-black" : "text-dimBlack"
-            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-            onClick={() => setActive(nav.title)}
-          >
-            <a href={`${nav.id}`} onClick={nav.title==="Logout"? ()=>{localStorage.clear()}: ()=>{}}>{nav.title}</a>
-          </li>
-        ))}
+      <li className={`font-poppins font-normal cursor-pointer text-[16px] mr-10`}>
+            <a href='/campaigns'>Campaigns </a>
+        </li>
+        <li className={`font-poppins font-normal cursor-pointer text-[16px] `}>
+            <a href='/' onClick={ ()=>{localStorage.clear()}}>Logout</a>
+        </li>
+      </ul>
+      ): userRole === 'Users'? (
+        <ul className="list-none sm:flex hidden justify-end items-center flex-1">
+      <li className={`font-poppins font-normal cursor-pointer text-[16px] mr-10`}>
+            <a href='/home'>Home</a>
+        </li>
+        <li className={`font-poppins font-normal cursor-pointer text-[16px] `}>
+            <a href='/' onClick={ ()=>{localStorage.clear()}}>Logout</a>
+        </li>
       </ul>
       ):(
         <ul className="list-none sm:flex hidden justify-end items-center flex-1">
@@ -49,19 +55,6 @@ const Navbar = () => {
             !toggle ? "hidden" : "flex"
           } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
         >
-          {/* <ul className="list-none flex justify-end items-start flex-1 flex-col">
-            {navLinks.map((nav, index) => (
-              <li
-                key={nav.id}
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                  active === nav.title ? "text-white" : "text-dimWhite"
-                } ${index === navLinks.length - 1 ? "mb-0" : "mb-4"}`}
-                onClick={() => setActive(nav.title)}
-              >
-                <a href={`#${nav.id}`}>{nav.title}</a>
-              </li>
-            ))}
-          </ul> */}
         </div>
       </div>
     </nav>

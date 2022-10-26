@@ -1,11 +1,8 @@
 import React from 'react'
-import { Card, CardMedia, Typography, ButtonBase } from '@material-ui/core/';
-import { useNavigate} from 'react-router-dom';
+import { Card, CardMedia, Typography} from '@material-ui/core/';
 import useStyles from './styles';
 export default function Campaign({campaign}) {
   const classes = useStyles();
-  const navigate = useNavigate();
-
 
   return (
     <Card className={classes.card}>

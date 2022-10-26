@@ -17,6 +17,7 @@ import {
 import Amplify from "aws-amplify";import { AmplifyAuthenticator } from '@aws-amplify/ui-react';
 import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
 import awsExports from "./aws-exports";
+
 Amplify.configure(awsExports);
 
 
@@ -39,17 +40,23 @@ const App = () => {
       setAuthState(nextAuthState);
       setUser(authData);
       console.log(user);
+      localStorage.setItem('role',authData.signInUserSession.idToken.payload["cognito:groups"][0]);
+      console.log(localStorage.getItem('role'));
     });
   });
 
   //check if the user is valid and logged in
-  return authState === AuthState.SignedIn && user ? (
+  return authState === AuthState.SignedIn && localStorage.getItem('role') === 'Banks' ? (
+      <div className="app">
+        <Landing/>
+    </div>
+    ) : localStorage.getItem('role') === 'Users' ? (
       <div className="app">
       <Home/>
     </div>
     ) : (
       <div className="bg">
-        <Router>
+      <Router>
       <main>{routes}</main>
     </Router>
       </div>
