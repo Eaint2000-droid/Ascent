@@ -6,7 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import DateAndTimePickers from './DateAndTimePickers';
 
 export default function CampaignForm( {currentId, setCurrentId}) {
-    const [campaignData, setCampaignData] = useState({ cardProgram: '', reward:'', rewardType:'', minSpend: '', 
+    const [campaignData, setCampaignData] = useState({ cardProgram: '', reward:'', minSpend: '', 
                                             merchant:'', startDate:'', endDate:'', selectedFile:''});
     const navigate = useNavigate(); 
     const classes = useStyles();
@@ -18,12 +18,6 @@ export default function CampaignForm( {currentId, setCurrentId}) {
         setCampaignData({ ...campaignData, cardProgram: event.target.value })
     }
 
-    //Setting reward type
-    const [typereward, setTypereward] = useState('');
-    const handleRewardTypeChange = (event) => {
-        setTypereward(event.target.value);
-        setCampaignData({ ...campaignData, rewardType: event.target.value })
-    }
 
     //Setting minimum spend
     const [minimumspend, setMinimumspend] = useState('');
@@ -34,35 +28,16 @@ export default function CampaignForm( {currentId, setCurrentId}) {
 
     //Setting start and end date
     const handleStartDateChange = (event) => {
-        var setStartDate = new Date(event.target.value);
-
-        const days = ['MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT', 'SUN'];
-        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    
-        const AM_PM = setStartDate.getHours() < 12 ? 'AM' : 'PM';
-     
-        const startDateString = days[setStartDate.getDay()] + ', ' +  months[setStartDate.getMonth()] + ' ' + (setStartDate.getDay() + 1) + ' ' +  setStartDate.getFullYear() + ", " + (setStartDate.getHours() % 13) + ':' + setStartDate.getMinutes() + ' ' + AM_PM;
-
         setCampaignData({ ...campaignData, startDate:event.target.value })
     }
 
     const handleEndDateChange = (event) => {
-        var setEndDate = new Date(event.target.value);
-
-        const days = ['MON', 'TUE', 'WED', 'THUR', 'FRI', 'SAT', 'SUN'];
-        const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    
-        const AM_PM = setEndDate.getHours() < 12 ? 'AM' : 'PM';
-       
-        const endDateString = days[setEndDate.getDay()] + ', ' +  months[setEndDate.getMonth()] + ' ' + (setEndDate.getDay() + 1) + ' ' +  setEndDate.getFullYear() + ", " + (setEndDate.getHours() % 13) + ':' + setEndDate.getMinutes() + ' ' + AM_PM;
-
         setCampaignData({ ...campaignData, endDate: event.target.value })
     }
     const clear = () => {
-      setCampaignData({ cardProgram: '', reward:'', rewardType:'', minSpend: '', selectedFile:'', 
+      setCampaignData({ cardProgram: '', reward:'', minSpend: '', selectedFile:'', 
         merchant:'', startDate:'', endDate:''})
         setCard('');
-        setTypereward('');
         setMinimumspend('');
         
     };
@@ -76,24 +51,25 @@ export default function CampaignForm( {currentId, setCurrentId}) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
               cardProgram: campaignData.cardProgram,
-              spendingRule:campaignData.spendingRule,
               merchant: campaignData.merchant,
+              minSpend: campaignData.minSpend,
+              reward: campaignData.reward,
               startDate: campaignData.startDate,
               endDate: campaignData.endDate,
-              image: campaignData.selectedFile,
+              selectedFile: campaignData.selectedFile,
             })
           }
       
-          // try {
-          //     const response = await fetch ('http://localhost:5000/campaigns', campaignRequest);
-          //     if (!response.ok) {
-          //         throw new Error("Unable to create a new campaign");
-          //     }
-          // } catch(error) {
-          //     console.log(error);
-          //     throw new Error ("Unable to create a new campaign");
-          // }
-          console.log(campaignData);
+          try {
+              const response = await fetch ('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1', campaignRequest);
+              if (!response.ok) {
+                  throw new Error("Unable to create a new campaign");
+              }
+          } catch(error) {
+              console.log(error);
+              throw new Error ("Unable to create a new campaign");
+          }
+          console.log(campaignRequest);
           clear();
           navigate('/campaigns');
 
@@ -117,16 +93,9 @@ export default function CampaignForm( {currentId, setCurrentId}) {
       <TextField name="merchant" InputLabelProps={{className: classes.input}} style={{width:550}}variant="outlined" label="Merchant associated with spending" fullWidth value={campaignData.merchant} onChange={(e) => setCampaignData({ ...campaignData, merchant: e.target.value })} />
 
       <div className={`${classes.flexRow}`}>
-      <TextField name="reward" InputLabelProps={{className: classes.input}} variant="outlined" label="Reward" fullWidth multiline value={campaignData.reward} onChange={(e) => setCampaignData({ ...campaignData, reward: parseInt(e.target.value) })} style={{width:100}} />
-      <FormControl style={{width:210,fontWeight:500, fontSize:30, marginTop:9,marginBottom:6}} variant="outlined" >
-          <InputLabel>Select Reward Type</InputLabel>
-          <Select value={typereward} onChange={handleRewardTypeChange}>
-            <MenuItem value={'Points'}>Point(s)</MenuItem>
-            <MenuItem value={'Miles'}>Miles</MenuItem>
-            <MenuItem value={'Cashback'}>Cashback</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl style={{width:210,fontWeight:500, fontSize:30, marginTop:9,marginBottom:6}} variant="outlined" >
+      <TextField name="reward" InputLabelProps={{className: classes.input}} variant="outlined" label="Reward" fullWidth multiline value={campaignData.reward} onChange={(e) => setCampaignData({ ...campaignData, reward: parseInt(e.target.value) })} style={{width:150, marginLeft:0}} />
+   
+        <FormControl style={{width:410,fontWeight:500, fontSize:30, marginTop:9,marginBottom:6}} variant="outlined" >
           <InputLabel>Select Minimum Spend</InputLabel>
           <Select value={minimumspend} onChange={handleMinSpendChange}>
             <MenuItem value={100}>$100</MenuItem>
