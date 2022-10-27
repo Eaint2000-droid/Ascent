@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import useStyles  from './styles';
 import { Grid, CircularProgress, Box , Typography, Button} from '@material-ui/core';
 import {NavLink} from 'react-router-dom';
@@ -8,22 +8,24 @@ import bannerImg from "../../assets/bankshome.png";
 import image from '../../assets/shopping2.jpg'
 export default function BanksHome() {
     const classes = useStyles();
-    const [initialData, setInitialData] = useState({ cardProgram: '', reward:'', rewardType:'', minSpend: '', 
-    merchant:'', startDate:'', endDate:'', selectedFile:image});
+    const [initialData, setInitialData] = useState([]);
 
      //Load data
-//     useEffect(() => {
-//         const sendRequest = async () => {
-//         try{
-//             const response = await fetch('http://localhost:5000/campaigns');
-//             const responseData = await response.json();
-//             setInitialData(responseData);
-//         }catch(error){
-//             console.log(error.message);
-//         }
-//         }
-//         sendRequest();
-//   },[])
+    useEffect(() => {
+        const sendRequest = async () => {
+        try{
+            const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
+            const responseData = await response.json();
+            setInitialData(JSON.parse(responseData));
+            console.log(initialData);
+
+        }catch(error){
+            console.log(error.message);
+        }
+        }
+        sendRequest();
+        
+  },[initialData])
     return (
         <React.Fragment>
         <div className="topcontainer">
@@ -45,7 +47,12 @@ export default function BanksHome() {
         </div>
 
         <Grid className={classes.bottomcontainer} container alignItems="stretch" spacing={3}>
-        <Grid item xs={12} sm={3}>
+        {initialData.map((campaign) => (
+            <Grid item xs={12} sm={3}>
+            <Campaign campaign={campaign}/>
+        </Grid>
+        ))}
+        {/* <Grid item xs={12} sm={3}>
             <Campaign campaign={initialData}/>
         </Grid>
         <Grid item xs={12} sm={3}>
@@ -56,7 +63,7 @@ export default function BanksHome() {
         </Grid>
         <Grid item xs={12} sm={3}>
             <Campaign campaign={initialData}/>
-        </Grid>
+        </Grid> */}
           {/* {partners.map((partner) => (
              <Grid key={partner._id} item xs={12} sm={3}>
                 <Partner partner={partner}/>

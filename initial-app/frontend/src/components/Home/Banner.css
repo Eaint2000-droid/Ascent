@@ -21,9 +21,10 @@
 }
 
 .bannerImg{
-    left:550px;
+    left:620px;
     bottom:0px;
     max-height: 200px;
     max-width: 300px;
     position:absolute;
+    
 }
