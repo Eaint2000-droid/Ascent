@@ -55,8 +55,8 @@ export default function CardCarousel({user}) {
             const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/users-cards/'+ user);
             const responseData = await response.json();
             setInitialData(responseData.users_cards);
-            console.log(initialData);
-            console.log(responseData.users_cards[imageIndex].card_name);
+            // console.log(initialData);
+            // console.log(responseData.users_cards[imageIndex].card_name);
 
         }catch(error){
             console.log(error.message);
@@ -87,7 +87,6 @@ export default function CardCarousel({user}) {
           {/* Card Type, Card Number, Bank */}
           {initialData?.map((data, index) => {
             if (index === imageIndex) {
-              {/* console.log(index,imageIndex); */}
               var cardProgram;
               switch(data.card_name) {
                 case "scis_shopping":

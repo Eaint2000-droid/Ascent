@@ -59,7 +59,7 @@ function Home() {
 
       <div className="rightSide">
         <Banner campaign={currentCampaign}/>
-        <Cards/>
+        <Cards user={user}/>
         <Transactions user={user}/>
       </div>
       </div>

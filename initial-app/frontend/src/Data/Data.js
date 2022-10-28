@@ -68,7 +68,7 @@ import {
         // boxShadow: "0px 10px 20px 0px #FDC0C7",
       },
       barValue: 80,
-      value: "$4,270",
+      value: 0,
       png: UilMoneyWithdrawal,
       series: [
         {
