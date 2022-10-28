@@ -50,13 +50,13 @@
 .firstCell{
   display: flex;
   flex-direction: column;
-  width:120px;
+  width:150px;
 }
 
 .infoCell {
   display: flex;
   flex-direction: column;
-  margin-left: 6rem;
+  margin-left: 4rem;
 }
 
 .infoText{

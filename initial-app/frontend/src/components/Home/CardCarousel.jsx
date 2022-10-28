@@ -116,7 +116,7 @@ export default function CardCarousel({user}) {
                   </div>
                   <div className="infoCell">
                 <h4 className="infoText">Bank</h4>
-                <h4 className="detailText">{data.bank_id}</h4>
+                <h4 className="detailText">{data.bank_name}</h4>
               </div>
                 </div>
               )
