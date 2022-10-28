@@ -10,15 +10,15 @@ export default function Campaign({campaign}) {
   switch(campaign[2]){
     case 1:
       cardProgram = "SCIS Shopping Card";
-      rewardType = campaign[7] + "Points";
+      rewardType = campaign[7] + " Points";
       break;
     case 2: 
       cardProgram = "SCIS Premium Miles Card";
-      rewardType = campaign[7] + "Miles";
+      rewardType = campaign[7] + " Miles";
       break;
     case 3: 
       cardProgram = "SCIS Platinum Miles Card";
-      rewardType = campaign[7] + "Miles";
+      rewardType = campaign[7] + " Miles";
       break;
     case 4: 
       cardProgram = "SCIS Freedom Card";

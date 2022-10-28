@@ -1,12 +1,12 @@
 import "./CardCarousel.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import cardOne from '../../assets/ccc.png'
 import cardTwo from "../../assets/ccc.png";
 import cardThree from "../../assets/ccc.png";
 import cardFour from "../../assets/ccc.png";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-import Card from "./Card";
+
 
 const images = [cardOne, cardTwo, cardThree, cardFour];
 const cardInfo = [['SCIS Freedom','**** **** **** 5678','SCIS Bank','Fabiana','03/23'],
@@ -15,7 +15,7 @@ const cardInfo = [['SCIS Freedom','**** **** **** 5678','SCIS Bank','Fabiana','0
                   ['SCIS PremiumMiles','**** **** **** 6878','SCIS Bank','Fabiana','03/22'],
                 ];
 
-export default function CardCarousel() {
+export default function CardCarousel({user}) {
   const NextArrow = ({ onClick }) => {
     return (
       <div className="arrow next" onClick={onClick}>
@@ -46,6 +46,28 @@ export default function CardCarousel() {
     beforeChange: (current, next) => setImageIndex(next),
   };
 
+  const [initialData, setInitialData] = useState([]);
+
+     //Load data
+    useEffect(() => {
+        const sendRequest = async () => {
+        try{
+            const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/users-cards/'+ user);
+            const responseData = await response.json();
+            setInitialData(responseData.users_cards);
+            console.log(initialData);
+            console.log(responseData.users_cards[imageIndex].card_name);
+
+        }catch(error){
+            console.log(error.message);
+        }
+        }
+        sendRequest();
+        
+  },[initialData])
+  
+
+
   return (
     <div className="Carousel">
           <Slider {...imageSliderSettings}>
@@ -63,26 +85,69 @@ export default function CardCarousel() {
           <h3 className="font-poppins font-semibold ss:text-[18px] text-[52px] text-black leading-[75px]">Card Information</h3>
 
           {/* Card Type, Card Number, Bank */}
-          <div className="infoRow">
+          {initialData?.map((data, index) => {
+            if (index === imageIndex) {
+              {/* console.log(index,imageIndex); */}
+              var cardProgram;
+              switch(data.card_name) {
+                case "scis_shopping":
+                  cardProgram = "SCIS Shopping Card";
+                  break;
+                case "scis_premiummiles":
+                  cardProgram = "SCIS PremiumMiles Card";
+                  break;
+                case "scis_platinummiles":
+                  cardProgram = "SCIS PlatinumMiles Card";
+                  break;
+                case "scis_freedom":
+                  cardProgram = "SCIS Freedom Card";
+                  break;
+                default:
+                 cardProgram = "";
+              }
+              return (
+                <div className="infoRow">
+                  <div className="firstCell">
+                    <h4 className="infoText">SCIS Type</h4>
+                    <h4 className="detailText">{cardProgram}</h4>
+                  </div>
+                  <div className="infoCell">
+                    <h4 className="infoText">Card Number</h4>
+                    <h4 className="detailText">{data.card_pan}</h4>
+                  </div>
+                  <div className="infoCell">
+                <h4 className="infoText">Bank</h4>
+                <h4 className="detailText">{data.bank_id}</h4>
+              </div>
+                </div>
+              )
+            }
+            
+            }
+          )}
+            {/* <div className="infoRow">
+           
               <div className="firstCell">
                 <h4 className="infoText">SCIS Type</h4>
-                <h4 className="detailText">{cardInfo[imageIndex][0]}</h4>
+                <h4 className="detailText">{initialData[imageIndex].card_name}</h4>
               </div>
               <div className="infoCell">
                 <h4 className="infoText">Card Number</h4>
-                <h4 className="detailText">{cardInfo[imageIndex][1]}</h4>
+                <h4 className="detailText">{initialData[imageIndex].card_pan}</h4>
               </div>
               <div className="infoCell">
                 <h4 className="infoText">Bank</h4>
-                <h4 className="detailText">{cardInfo[imageIndex][2]}</h4>
+                <h4 className="detailText">{initialData[imageIndex][2]}</h4>
               </div>
-          </div>
+          </div> */}
+         
+         
 
           {/* Name, Valid thru */}
           <div className="infoRow">
               <div className="firstCell">
                 <h4 className="infoText">Name</h4>
-                <h4 className="detailText">{cardInfo[imageIndex][3]}</h4>
+                <h4 className="detailText">{localStorage.getItem('CognitoIdentityServiceProvider.4eid9s9q0khtii45ko77b20ijt.LastAuthUser')}</h4>
               </div>
               <div className="infoCell">
                 <h4 className="infoText">Valid thru</h4>

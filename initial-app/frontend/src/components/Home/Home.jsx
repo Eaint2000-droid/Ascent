@@ -15,7 +15,9 @@ function Home() {
   let day = date.getDate();
   let month = date.getMonth();
   let year = date.getFullYear();
-  let currentdate = new Date(`${year}`,`${month}`,`${day}`)
+  let currentdate = new Date(`${year}`,`${month}`,`${day}`);
+  var user = localStorage.getItem('email');
+  var username = localStorage.getItem('CognitoIdentityServiceProvider.4eid9s9q0khtii45ko77b20ijt.LastAuthUser');
 
 
 
@@ -26,7 +28,7 @@ function Home() {
          const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
          const responseData = await response.json();
          setInitialData(JSON.parse(responseData));
-         console.log(initialData);
+        //  console.log(initialData);
          for (let i = 0; i< initialData.length;i++) {
            var date_time_split = initialData[i][3].split('-');
            var campaign_date =  new Date(date_time_split[0], date_time_split[1], date_time_split[2]); 
@@ -50,15 +52,15 @@ function Home() {
       <Navbar/>
       <div className="DashboardInfo">
       <div className="leftSide">
-        <h1 className="font-poppins font-semibold ss:text-[32px] text-[52px] text-black ss:leading-[90.8px] leading-[75px] text-start ml-12">Welcome back Fabiana!</h1>
+        <h1 className="font-poppins font-semibold ss:text-[32px] text-[52px] text-black ss:leading-[90.8px] leading-[75px] text-start ml-12">Welcome back {username}!</h1>
         <h4 className="font-semibold ml-12">View your points activities and latest transactions</h4>
-          <CardCarousel/>    
+          <CardCarousel user={user}/>    
       </div>
 
       <div className="rightSide">
         <Banner campaign={currentCampaign}/>
         <Cards/>
-        <Transactions/>
+        <Transactions user={user}/>
       </div>
       </div>
       

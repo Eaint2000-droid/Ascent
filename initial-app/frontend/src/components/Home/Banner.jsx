@@ -7,7 +7,7 @@ import React from "react";
 export default function Banner({campaign}) {
     var rewardType;
     var cardProgram;
-    console.log(campaign)
+    // console.log(campaign)
   
     switch(campaign[2]){
       case 1:

@@ -7,7 +7,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [user, setUser] = useState(localStorage.getItem('CognitoIdentityServiceProvider.4eid9s9q0khtii45ko77b20ijt.LastAuthUser'));
   const [userRole, setUserRole] = useState(localStorage.getItem('role'));
-  console.log(user);
+
   useEffect(() => {
       setUser(localStorage.getItem('CognitoIdentityServiceProvider.4eid9s9q0khtii45ko77b20ijt.LastAuthUser'));
       setUserRole(localStorage.getItem('role'));

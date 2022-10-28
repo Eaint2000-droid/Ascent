@@ -41,7 +41,8 @@ const App = () => {
       setUser(authData);
       console.log(user);
       localStorage.setItem('role',authData.signInUserSession.idToken.payload["cognito:groups"][0]);
-      console.log(localStorage.getItem('role'));
+      localStorage.setItem('email',authData.unverified.email);
+    
     });
   });
 

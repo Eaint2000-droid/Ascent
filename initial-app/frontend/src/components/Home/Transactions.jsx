@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -20,14 +20,18 @@ function createData(date, transaction, rewardType, points, remarks, amountSpent)
 function Row(props) {
   const { row } = props;
   const [open, setOpen] = useState(false);
+  var date = row.transaction_date;
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var split_date = date.split('-');
+  var transaction_date = split_date[2] + ' ' + months[split_date[1]] + ' ' + split_date[0];
 
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
-        <TableCell align="left">{row.date}</TableCell>
-        <TableCell align="left">{row.transaction}</TableCell>
-        <TableCell align="left">{row.rewardType}</TableCell>
-        <TableCell align="left">  <span className="points" style={makeStyle(row.points)}>{row.points}</span></TableCell>
+        <TableCell align="left">{transaction_date}</TableCell>
+        <TableCell align="left">{row.merchant_name}</TableCell>
+        <TableCell align="left">{row.currency}</TableCell>
+        <TableCell align="left">  <span className="points" >{row.reward_earned}</span></TableCell>
         <TableCell align="left" className="Details" onClick={() => setOpen(!open)}>
             {open ? "Hide Details" : "View Details"}
         </TableCell>
@@ -39,22 +43,22 @@ function Row(props) {
             <Box sx={{ margin: 1 }}>
               <Table size="small" aria-label="purchases">
                 <TableBody>
-                    <TableRow key={row.transaction}>
+                    <TableRow key={row.merchant_name}>
                       <TableCell align="left">
                         Remarks
                       </TableCell>
-                      <TableCell align="left">{row.remarks}</TableCell>
+                      <TableCell align="left">NA</TableCell>
                       <TableCell/>
                       <TableCell/>
                       <TableCell/>
                       <TableCell/>
                     </TableRow>
 
-                    <TableRow key={row.transaction}>
+                    <TableRow key={row.merchant_name}>
                       <TableCell align="left">
                       Amount Spent
                       </TableCell>
-                      <TableCell align="left">{row.amountSpent}</TableCell>
+                      <TableCell align="left">{row.currency} {row.amount}</TableCell>
                       <TableCell/>
                       <TableCell/>
                       <TableCell/>
@@ -72,12 +76,12 @@ function Row(props) {
 }
 
 
-const rows = [
-  createData("28 August 2022","Bath & Body Works Bonus", "Cashback", "+1,000","Get 20% in cashback","$2,000"),
-  createData("28 August 2022","Flight Booking: LNDN - SIN ", "Redeem",  "-2,134","Get 20% in cashback","$2,000"),
-  createData("28 August 2022","Bath & Body Works Bonus", "Reward Points",  "+3,000","Get 20% in cashback","$2,000"),
-  createData("28 August 2022","Flight Booking: KOR - SIN", "Redeem",  "-5,850","Get 20% in cashback","$2,000"),
-];
+// const rows = [
+//   createData("28 August 2022","Bath & Body Works Bonus 1", "Cashback", "+1,000","Get 20% in cashback","$2,000"),
+//   createData("28 August 2022","Flight Booking: LNDN - SIN ", "Redeem",  "-2,134","Get 20% in cashback","$2,000"),
+//   createData("28 August 2022","Bath & Body Works Bonus", "Reward Points",  "+3,000","Get 20% in cashback","$2,000"),
+//   createData("28 August 2022","Flight Booking: KOR - SIN", "Redeem",  "-5,850","Get 20% in cashback","$2,000"),
+// ];
 
 
 const makeStyle=(points)=>{
@@ -103,8 +107,29 @@ const makeStyle=(points)=>{
   }
 }
 
-export default function Transactions({CardType}) {
-    const [open, setOpen] = useState(false);
+export default function Transactions({user}) {
+    // const [open, setOpen] = useState(false);
+    const [initialData, setInitialData] = useState([]);
+
+     //Load data
+    useEffect(() => {
+        const sendRequest = async () => {
+        try{
+            const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/transactions/'+ user);
+            const responseData = await response.json();
+            setInitialData(responseData.transactions);
+            console.log(JSON.parse(initialData));
+
+        }catch(error){
+            console.log(error.message);
+        }
+        }
+        sendRequest();
+        
+  },[])
+  // console.log(initialData.map((row) => (
+  //   {row['card_id']}
+  // )))
   return (
       <div className="Table">
       <h3 className="font-poppins font-semibold ss:text-[18px] text-[52px] text-black ss:leading-[90.8px] leading-[75px]">Latest Transactions (Last 30 days)</h3>
@@ -120,9 +145,13 @@ export default function Transactions({CardType}) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {/* {rows.map((row) => (
               <Row key={row.name} row={row} />
-            ))}
+            ))} */}
+            {initialData.map((transaction) => (
+              <Row key={transaction.merchant_name} row={transaction}/>
+            ))
+            }
           </TableBody>
         </Table>
       </TableContainer>
