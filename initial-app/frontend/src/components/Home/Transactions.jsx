@@ -24,13 +24,26 @@ function Row(props) {
   const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   var split_date = date.split('-');
   var transaction_date = split_date[2] + ' ' + months[split_date[1]] + ' ' + split_date[0];
-
+  var rewardType;
+  switch(row.reward_type) {
+    case "points":
+      rewardType = "Points";
+      break;
+    case "miles":
+      rewardType = "Miles";
+      break;
+    case "cashback":
+      rewardType = "Cashback";
+      break;
+    default:
+      rewardType = "";
+  }
   return (
     <React.Fragment>
       <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
         <TableCell align="left">{transaction_date}</TableCell>
         <TableCell align="left">{row.merchant_name}</TableCell>
-        <TableCell align="left">{row.currency}</TableCell>
+        <TableCell align="left">{rewardType}</TableCell>
         <TableCell align="left">  <span className="points" >{row.reward_earned}</span></TableCell>
         <TableCell align="left" className="Details" onClick={() => setOpen(!open)}>
             {open ? "Hide Details" : "View Details"}
@@ -140,7 +153,7 @@ export default function Transactions({user}) {
               <TableCell align="left">Date</TableCell>
               <TableCell align="left">Transaction</TableCell>
               <TableCell align="left">Reward Type</TableCell>
-              <TableCell align="left">Points</TableCell>
+              <TableCell align="left">Reward</TableCell>
               <TableCell />
             </TableRow>
           </TableHead>

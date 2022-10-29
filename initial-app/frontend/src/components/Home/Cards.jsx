@@ -44,14 +44,14 @@ const Cards = ({user}) => {
   return (
     <div className="Cards">
       {cardsData.map((card, id) => {
-        if (card.title === "Points") {
-          card.value = '$' + totalPoints;
+        if (card.title === "Total Points") {
+          card.value = totalPoints;
       
-        } else if (card.title === "Cashback") {
-          card.value = totalCashback + '% Cashback';
+        } else if (card.title === "Total Cashback") {
+          card.value = totalCashback + '%';
        
-        } else if (card.title === "Travel & Miles") {
-          card.value = totalMiles + ' Miles';
+        } else if (card.title === "Total Miles") {
+          card.value = totalMiles;
          
         }
        
