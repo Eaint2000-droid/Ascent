@@ -17,7 +17,7 @@ export default function BanksHome() {
             const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
             const responseData = await response.json();
             setInitialData(JSON.parse(responseData));
-            console.log(initialData);
+            // console.log(initialData);
 
         }catch(error){
             console.log(error.message);

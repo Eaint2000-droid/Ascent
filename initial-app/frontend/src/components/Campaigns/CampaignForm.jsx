@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { TextField, Button,Paper, Grid, MenuItem, FormControl, InputLabel, Select } from '@material-ui/core';
+import { TextField, Button,Paper, Grid, MenuItem, FormControl, InputLabel, Select, Input, InputAdornment } from '@material-ui/core';
 import useStyles from './styles';
 import FileBase from 'react-file-base64';
 import {useNavigate} from 'react-router-dom';
@@ -53,7 +53,7 @@ export default function CampaignForm( {currentId, setCurrentId}) {
               cardProgram: campaignData.cardProgram,
               merchant: campaignData.merchant,
               minSpend: campaignData.minSpend,
-              reward: campaignData.reward,
+              reward: parseFloat(campaignData.reward),
               startDate: campaignData.startDate,
               endDate: campaignData.endDate,
               selectedFile: campaignData.selectedFile,
@@ -69,6 +69,7 @@ export default function CampaignForm( {currentId, setCurrentId}) {
               console.log(error);
               throw new Error ("Unable to create a new campaign");
           }
+          console.log(parseFloat(campaignData.reward))
           console.log(campaignRequest);
           clear();
           navigate('/campaigns');
@@ -90,10 +91,21 @@ export default function CampaignForm( {currentId, setCurrentId}) {
           </Select>
         </FormControl>
 
-      <TextField name="merchant" InputLabelProps={{className: classes.input}} style={{width:550}}variant="outlined" label="Merchant associated with spending" fullWidth value={campaignData.merchant} onChange={(e) => setCampaignData({ ...campaignData, merchant: e.target.value })} />
+      <TextField name="merchant" InputLabelProps={{className: classes.input}} style={{width:550}} variant="outlined" label="Merchant associated with spending" fullWidth value={campaignData.merchant} onChange={(e) => setCampaignData({ ...campaignData, merchant: e.target.value })} />
 
       <div className={`${classes.flexRow}`}>
-      <TextField name="reward" InputLabelProps={{className: classes.input}} variant="outlined" label="Reward" fullWidth multiline value={campaignData.reward} onChange={(e) => setCampaignData({ ...campaignData, reward: parseInt(e.target.value) })} style={{width:150, marginLeft:0}} />
+      <FormControl sx={{ m: 1 }} variant="standard" style={{width:150, marginRight:10,marginTop:13}}>
+          <InputLabel htmlFor="standard-adornment-amount">Reward</InputLabel>
+          <Input
+            id="standard-adornment-amount"
+            value={campaignData.reward}
+            onChange={(e) => setCampaignData({ ...campaignData, reward: e.target.value })}
+            startAdornment={<InputAdornment position="start"> </InputAdornment>}
+          />
+        </FormControl>
+      {/* <TextField name="reward" InputLabelProps={{className: classes.input}}
+       variant="outlined" label="Reward" fullWidth multiline value={campaignData.reward} 
+       onChange={(e) => setCampaignData({ ...campaignData, reward: parseInt(e.target.value) })} style={{width:150, marginLeft:0}} /> */}
    
         <FormControl style={{width:410,fontWeight:500, fontSize:30, marginTop:9,marginBottom:6}} variant="outlined" >
           <InputLabel>Select Minimum Spend</InputLabel>
@@ -106,6 +118,7 @@ export default function CampaignForm( {currentId, setCurrentId}) {
           </Select>
         </FormControl>
       </div>
+      
 
       <div className={`${classes.flexRow}`}>
         <DateAndTimePickers setDate={handleStartDateChange} setLabel="Event Start Date"/>
