@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect} from "react";
 import Navbar from './components/Navbar'
 import Landing from './components/Landing'
+import Settings from './components/Settings'
 import Home from './components/Home/Home'
 import CreateCampaigns from './components/Campaigns/CreateCampaigns'
 import BanksHome from './components/BanksHome/BanksHome'
@@ -24,6 +25,7 @@ Amplify.configure(awsExports);
 const routes = (
   <Routes>
     <Route path="/" element={<Landing/>} exact/>
+    <Route path="/settings" element={<Settings/>}/>
     <Route path="/home" element={<Home/>} exact/>
     <Route path="/campaignsform" element={<CreateCampaigns/>} exact/>
     <Route path="/campaigns" element={<BanksHome/>} exact/>
@@ -43,6 +45,7 @@ const App = () => {
       console.log(user);
       localStorage.setItem('role',authData.signInUserSession.idToken.payload["cognito:groups"][0]);
       localStorage.setItem('email',authData.attributes.email);
+      localStorage.setItem('access token', authData.signInUserSession.accessToken.jwtToken);
     
     });
   });
@@ -52,9 +55,9 @@ const App = () => {
       <div className="app">
         <Landing/>
     </div>
-    ) : localStorage.getItem('role') === 'Users' ? (
+    ) : authState === AuthState.SignedIn && localStorage.getItem('role') === 'Users' ? (
       <div className="app">
-      <Home/>
+        <Landing/>
     </div>
     ) : (
       <div className="bg">

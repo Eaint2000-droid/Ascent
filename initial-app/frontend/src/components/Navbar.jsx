@@ -26,8 +26,11 @@ const Navbar = () => {
       </ul>
       ): userRole === 'Users'? (
         <ul className="list-none sm:flex hidden justify-end items-center flex-1">
-      <li className={`font-poppins font-normal cursor-pointer text-[16px] mr-10`}>
+        <li className={`font-poppins font-normal cursor-pointer text-[16px] mr-10`}>
             <a href='/home'>Home</a>
+        </li>
+        <li className={`font-poppins font-normal cursor-pointer text-[16px] mr-10`}>
+            <a href='/settings'>Settings</a>
         </li>
         <li className={`font-poppins font-normal cursor-pointer text-[16px] `}>
             <a href='/' onClick={ ()=>{localStorage.clear()}}>Logout</a>

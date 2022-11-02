@@ -48,7 +48,7 @@ const Cards = ({user}) => {
           card.value = totalPoints;
       
         } else if (card.title === "Total Cashback") {
-          card.value = totalCashback + '%';
+          card.value = '$' + totalCashback ;
        
         } else if (card.title === "Total Miles") {
           card.value = totalMiles;

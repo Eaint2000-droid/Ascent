@@ -32,6 +32,26 @@ export default function CardCarousel({user}) {
     );
   };
 
+  const [initialData, setInitialData] = useState([]);
+
+     //Load data
+    useEffect(() => {
+        const sendRequest = async () => {
+        try{
+            const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/users-cards/'+ user);
+            const responseData = await response.json();
+            setInitialData(responseData.users_cards);
+            // console.log(initialData);
+            console.log(initialData.length);
+
+        }catch(error){
+            console.log(error.message);
+        }
+        }
+        sendRequest();
+        
+  },[])
+  
   const [imageIndex, setImageIndex] = useState(0);
 
   const imageSliderSettings = {
@@ -45,29 +65,6 @@ export default function CardCarousel({user}) {
     prevArrow: <PrevArrow />,
     beforeChange: (current, next) => setImageIndex(next),
   };
-
-  const [initialData, setInitialData] = useState([]);
-
-     //Load data
-    useEffect(() => {
-        const sendRequest = async () => {
-        try{
-            const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/users-cards/'+ user);
-            const responseData = await response.json();
-            console.log(responseData.users_cards);
-            setInitialData(responseData.users_cards);
-            console.log(initialData);
-            // console.log(responseData.users_cards[imageIndex].card_name);
-
-        }catch(error){
-            console.log(error.message);
-        }
-        }
-        sendRequest();
-        
-  },[])
-  
-
 
   return (
     <div className="Carousel">
@@ -125,22 +122,6 @@ export default function CardCarousel({user}) {
             
             }
           )}
-            {/* <div className="infoRow">
-           
-              <div className="firstCell">
-                <h4 className="infoText">SCIS Type</h4>
-                <h4 className="detailText">{initialData[imageIndex].card_name}</h4>
-              </div>
-              <div className="infoCell">
-                <h4 className="infoText">Card Number</h4>
-                <h4 className="detailText">{initialData[imageIndex].card_pan}</h4>
-              </div>
-              <div className="infoCell">
-                <h4 className="infoText">Bank</h4>
-                <h4 className="detailText">{initialData[imageIndex][2]}</h4>
-              </div>
-          </div> */}
-         
          
 
           {/* Name, Valid thru */}
