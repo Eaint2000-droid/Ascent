@@ -38,10 +38,11 @@ const App = () => {
   useEffect(() => {
     return onAuthUIStateChange((nextAuthState, authData) => {
       setAuthState(nextAuthState);
+      console.log(authState);
       setUser(authData);
       console.log(user);
       localStorage.setItem('role',authData.signInUserSession.idToken.payload["cognito:groups"][0]);
-      localStorage.setItem('email',authData.unverified.email);
+      localStorage.setItem('email',authData.attributes.email);
     
     });
   });

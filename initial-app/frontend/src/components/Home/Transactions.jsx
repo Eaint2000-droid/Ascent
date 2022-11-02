@@ -159,7 +159,7 @@ export default function Transactions({user}) {
             {/* {rows.map((row) => (
               <Row key={row.name} row={row} />
             ))} */}
-            {initialData.map((transaction) => (
+            {initialData?.map((transaction) => (
               <Row key={transaction.merchant_name} row={transaction}/>
             ))
             }
