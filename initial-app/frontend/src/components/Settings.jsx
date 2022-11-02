@@ -2,10 +2,12 @@ import React from 'react'
 import deleteIcon from "../assets/delete.png";
 import './Settings.css'
 import {Typography, Button} from '@material-ui/core';
-
+import {useNavigate} from 'react-router-dom';
 export default function Settings() {
     var user = localStorage.getItem('email');
     var access_token = localStorage.getItem('access token');
+
+    const navigate = useNavigate();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -21,6 +23,8 @@ export default function Settings() {
             const responseData = await response.json();
             console.log(responseData);
             console.log(user);
+            localStorage.clear();
+            navigate('/');
         } catch(error) {
             console.log(error.message);
         }
