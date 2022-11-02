@@ -8,19 +8,45 @@
     justify-content:flex-start;
     align-items:center;
 }
-title{
+.title{
     display:flex;
     flex-direction: column;
     justify-content:flex-start;
-    align-items:center;
 }
 img{
     margin-left:80px;
     /* width:360px;
     max-height: 200px; */
-    /* object-fit: cover; */
+    object-fit: cover;
 }
 button{
     background-color:blue;
     justify-content:flex-start;
+}
+@media screen and (min-width: 1200px) and (max-width: 1380px) {
+    img{
+       
+        position:fixed;
+        bottom:10rem;
+        /* bottom:590px; */
+        width:30%;
+    }
+    .title{
+        margin-left:0px;
+        position:fixed;
+        right:5rem;
+    }
+}
+@media screen and (min-width: 1000px) and (max-width: 1199px) {
+    img{
+        width:30%;
+        position:fixed;
+        bottom:10rem;
+        right:70%;
+    }
+    .title{
+        margin-left:0px;
+        position:fixed;
+        right:10%;
+    }
 }

@@ -60,7 +60,7 @@ function Row(props) {
                       <TableCell align="left">
                         Remarks
                       </TableCell>
-                      <TableCell align="left">NA</TableCell>
+                      <TableCell align="left">{row.remarks}</TableCell>
                       <TableCell/>
                       <TableCell/>
                       <TableCell/>
@@ -140,9 +140,7 @@ export default function Transactions({user}) {
         sendRequest();
         
   },[])
-  // console.log(initialData.map((row) => (
-  //   {row['card_id']}
-  // )))
+
   return (
       <div className="Table">
       <h3 className="font-poppins font-semibold ss:text-[18px] text-[52px] text-black ss:leading-[90.8px] leading-[75px]">Latest Transactions (Last 30 days)</h3>

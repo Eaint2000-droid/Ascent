@@ -16,8 +16,9 @@ export default function BanksHome() {
         try{
             const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
             const responseData = await response.json();
-            setInitialData(JSON.parse(responseData));
-            // console.log(initialData);
+            setInitialData(JSON.parse(response));
+            console.log(responseData);
+            console.log(initialData);
 
         }catch(error){
             console.log(error.message);
@@ -52,23 +53,6 @@ export default function BanksHome() {
             <Campaign campaign={campaign}/>
         </Grid>
         ))}
-        {/* <Grid item xs={12} sm={3}>
-            <Campaign campaign={initialData}/>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-            <Campaign campaign={initialData}/>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-            <Campaign campaign={initialData}/>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-            <Campaign campaign={initialData}/>
-        </Grid> */}
-          {/* {partners.map((partner) => (
-             <Grid key={partner._id} item xs={12} sm={3}>
-                <Partner partner={partner}/>
-             </Grid>
-          ))} */}
         </Grid>
         </React.Fragment>
     
