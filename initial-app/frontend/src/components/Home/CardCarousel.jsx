@@ -2,18 +2,15 @@ import "./CardCarousel.css";
 import { useState, useEffect } from "react";
 import Slider from "react-slick";
 import cardOne from '../../assets/ccc.png'
-import cardTwo from "../../assets/ccc.png";
-import cardThree from "../../assets/ccc.png";
-import cardFour from "../../assets/ccc.png";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 
-const images = [cardOne, cardTwo, cardThree, cardFour];
 const cardInfo = [['SCIS Freedom','**** **** **** 5678','SCIS Bank','Fabiana','03/23'],
                   ['SCIS Shopping','**** **** **** 1234','SCIS Bank','Fabiana','05/27'],
                   ['SCIS PlatinumMiles','**** **** **** 1234','SCIS Bank','Fabiana','03/25'],
                   ['SCIS PremiumMiles','**** **** **** 6878','SCIS Bank','Fabiana','03/22'],
                 ];
+
 
 export default function CardCarousel({user}) {
   const NextArrow = ({ onClick }) => {
@@ -42,7 +39,6 @@ export default function CardCarousel({user}) {
             const responseData = await response.json();
             setInitialData(responseData.users_cards);
             // console.log(initialData);
-            console.log(initialData.length);
 
         }catch(error){
             console.log(error.message);
@@ -58,7 +54,7 @@ export default function CardCarousel({user}) {
     infinite: true,
     lazyLoad: true,
     speed: 300,
-    slidesToShow: 3,
+    slidesToShow: 1,
     centerMode: true,
     centerPadding: 0,
     nextArrow: <NextArrow />,
@@ -69,9 +65,10 @@ export default function CardCarousel({user}) {
   return (
     <div className="Carousel">
           <Slider {...imageSliderSettings}>
-            {images.map((img, idx) => (
+            {console.log("here")}
+            {initialData?.map((entry, idx) => (
               <div className={idx === imageIndex ? "slide activeSlide" : "slide"}>
-                <img src={img} alt={img} />
+                <img src={cardOne} alt={""} />
                
               </div>
             ))}
