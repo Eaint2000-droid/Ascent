@@ -32,7 +32,7 @@ cd /initial-app/frontend
 npm install
 
 # This command runs the frontend of the application in development mode.
-npm run dev
+npm run start
 ```
 
-Once the above commands have been run, please open [http://localhost:5137](http://localhost:5137) to view the application in your browser.
+Once the above commands have been run, please open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
