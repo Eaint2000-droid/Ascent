@@ -17,7 +17,7 @@ const Cards = ({user}) => {
          const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/users-cards/'+ user);
          const responseData = await response.json();
          setInitialData(responseData.users_cards);
-         console.log(initialData);
+        //  console.log(initialData);
          var total_miles = 0;
          var total_points = 0;
          var total_cashback = 0;

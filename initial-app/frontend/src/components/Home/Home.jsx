@@ -28,15 +28,27 @@ function Home() {
          const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
          const responseData = await response.json();
          setInitialData(JSON.parse(responseData));
-        //  console.log(initialData);
-         for (let i = 0; i< initialData.length;i++) {
-           var date_time_split = initialData[i][3].split('-');
-           var campaign_date =  new Date(date_time_split[0], date_time_split[1], date_time_split[2]); 
+         console.log(initialData);
 
-           if (campaign_date.getMonth() === currentdate.getMonth() && campaign_date.getDate() === currentdate.getDate() && campaign_date.getFullYear() === currentdate.getFullYear()) {
-             console.log("Campaign starts now!");
-             setCurrentCampaign(initialData[i]);
-             console.log(currentCampaign);
+         for (let i = 0; i< initialData.length;i++) {
+           var startdate_and_time = initialData[i][3].split(' '); 
+           var startdate_time_split = startdate_and_time[0].split('-');
+
+           var enddate_and_time = initialData[i][4].split(' ');
+           var enddate_time_split = enddate_and_time[0].split('-');
+
+           var campaign_date =  new Date(startdate_time_split[0], startdate_time_split[1]-1, startdate_time_split[2]); 
+           var end_campaign_date = new Date(enddate_time_split[0],enddate_time_split[1]-1,enddate_time_split[2]);
+        
+            if (campaign_date.getMonth() <= currentdate.getMonth() 
+              && campaign_date.getDate() <= currentdate.getDate() 
+              && campaign_date.getFullYear() <= currentdate.getFullYear() 
+              && currentdate.getMonth() <= end_campaign_date.getMonth()
+              && currentdate.getDate() <= end_campaign_date.getDate()
+              && currentdate.getFullYear() <= end_campaign_date.getFullYear()) {
+                console.log("Campaign is ongoing now!");
+                setCurrentCampaign(initialData[i]);
+                console.log(currentCampaign);
            }
          }
 

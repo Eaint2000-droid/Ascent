@@ -26,8 +26,8 @@ button{
 @media screen and (min-width: 1200px) and (max-width: 1380px) {
     img{
        
-        position:fixed;
-        bottom:10rem;
+        /* position:fixed;
+        bottom:2.3rem; */
         /* bottom:590px; */
         width:30%;
     }
@@ -41,7 +41,7 @@ button{
     img{
         width:30%;
         position:fixed;
-        bottom:10rem;
+        bottom:2.3rem;
         right:70%;
     }
     .title{

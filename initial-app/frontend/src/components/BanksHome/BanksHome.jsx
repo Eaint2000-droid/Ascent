@@ -5,7 +5,8 @@ import {NavLink} from 'react-router-dom';
 import Campaign from './Campaign'
 import './BanksHome.css'
 import bannerImg from "../../assets/bankshome.png";
-import image from '../../assets/shopping2.jpg'
+import image from '../../assets/shopping2.jpg';
+import axios from 'axios';
 export default function BanksHome() {
     const classes = useStyles();
     const [initialData, setInitialData] = useState([]);
@@ -14,10 +15,8 @@ export default function BanksHome() {
     useEffect(() => {
         const sendRequest = async () => {
         try{
-            const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
-            const responseData = await response.json();
-            setInitialData(JSON.parse(response));
-            console.log(responseData);
+            const response = await axios('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
+            setInitialData(JSON.parse(response.data));
             console.log(initialData);
 
         }catch(error){
@@ -38,11 +37,6 @@ export default function BanksHome() {
                 </Typography>
             </Box>
 
-            {/* <button> <NavLink to="/campaignsform">
-            <Typography variant="h5" color="black" fontWeight= 'bold' style={{width:650}}>
-                    <span style={{color:"#fffff"}}>Create new campaign</span>
-                </Typography>
-            </NavLink></button> */}
             <Button className={classes.buttonSubmit} variant="contained" color="primary" size="small" fullWidth><NavLink to="/campaignsform">Create new Campaign</NavLink></Button>
             </div>
         </div>

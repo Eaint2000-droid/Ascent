@@ -65,7 +65,6 @@ export default function CardCarousel({user}) {
   return (
     <div className="Carousel">
           <Slider {...imageSliderSettings}>
-            {console.log("here")}
             {initialData?.map((entry, idx) => (
               <div className={idx === imageIndex ? "slide activeSlide" : "slide"}>
                 <img src={cardOne} alt={""} />
