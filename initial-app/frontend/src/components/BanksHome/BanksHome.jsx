@@ -10,22 +10,15 @@ import axios from 'axios';
 export default function BanksHome() {
     const classes = useStyles();
     const [initialData, setInitialData] = useState([]);
-
+    const sendRequest = async () => {
+        const response = await axios.get('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
+        setInitialData(JSON.parse(response.data));
+    }
      //Load data
     useEffect(() => {
-        const sendRequest = async () => {
-        try{
-            const response = await axios('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
-            setInitialData(JSON.parse(response.data));
-            console.log(initialData);
+            sendRequest();
+    },[])
 
-        }catch(error){
-            console.log(error.message);
-        }
-        }
-        sendRequest();
-        
-  },[initialData])
     return (
         <React.Fragment>
         <div className="topcontainer">
