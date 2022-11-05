@@ -128,7 +128,11 @@ export default function Transactions({user}) {
     useEffect(() => {
         const sendRequest = async () => {
         try{
-            const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/transactions/'+ user);
+            const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/transactions/'+ user, {
+                headers: {
+                    "Authorization" : localStorage.getItem("jwtToken")
+                }
+            });
             const responseData = await response.json();
             setInitialData(responseData.transactions);
             console.log(JSON.parse(initialData));

@@ -48,7 +48,7 @@ export default function CampaignForm( {currentId, setCurrentId}) {
 
         const campaignRequest = {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', "Authorization" : localStorage.getItem("jwtToken")},
             body: JSON.stringify({
               cardProgram: campaignData.cardProgram,
               merchant: campaignData.merchant,

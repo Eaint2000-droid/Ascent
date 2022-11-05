@@ -25,7 +25,11 @@ function Home() {
  useEffect(() => {
      const sendRequest = async () => {
      try{
-         const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
+         const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1', {
+            headers: {
+              "Authorization" : localStorage.getItem("jwtToken")
+            }
+          });
          const responseData = await response.json();
          setInitialData(JSON.parse(responseData));
          console.log(initialData);

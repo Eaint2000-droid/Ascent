@@ -7,11 +7,17 @@ import './BanksHome.css'
 import bannerImg from "../../assets/bankshome.png";
 import image from '../../assets/shopping2.jpg';
 import axios from 'axios';
+
 export default function BanksHome() {
     const classes = useStyles();
     const [initialData, setInitialData] = useState([]);
+    const token = localStorage.getItem('access token');
     const sendRequest = async () => {
-        const response = await axios.get('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1');
+        const response = await axios.get('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/v1', {
+            headers: {
+                "Authorization" : localStorage.getItem("jwtToken")
+            }
+        });
         setInitialData(JSON.parse(response.data));
     }
      //Load data

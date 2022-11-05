@@ -13,7 +13,7 @@ export default function Settings() {
         e.preventDefault();
         const accessTokenParam = {
             method: 'DELETE',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', "Authorization" : localStorage.getItem("jwtToken")},
             body: JSON.stringify({
               accessToken: access_token,
             })

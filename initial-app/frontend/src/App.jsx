@@ -43,6 +43,7 @@ const App = () => {
       console.log(authState);
       setUser(authData);
       console.log(user);
+      localStorage.setItem('jwtToken',authData.signInUserSession.idToken.jwtToken);
       localStorage.setItem('role',authData.signInUserSession.idToken.payload["cognito:groups"][0]);
       localStorage.setItem('email',authData.attributes.email);
       localStorage.setItem('access token', authData.signInUserSession.accessToken.jwtToken);
