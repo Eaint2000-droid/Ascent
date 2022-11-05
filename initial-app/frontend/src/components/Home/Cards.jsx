@@ -10,40 +10,40 @@ const Cards = ({user}) => {
   const [totalPoints, setTotalPoints] = useState(0);
   const [totalCashback, setTotalCashback] = useState(0);
 
-  //Load data
- useEffect(() => {
-     const sendRequest = async () => {
-     try{
+
+   const sendRequest = async () => {
          const response = await fetch('https://tfaz66806a.execute-api.ap-southeast-1.amazonaws.com/beta/users-cards/'+ user,
          {
               headers: {
                 "Authorization" : localStorage.getItem("jwtToken")
             }
          });
-         const responseData = await response.json();
-         setInitialData(responseData.users_cards);
-        //  console.log(initialData);
-         var total_miles = 0;
-         var total_points = 0;
-         var total_cashback = 0;
-         for (let i = 0; i< initialData.length;i++) {
-           if (initialData[i].reward_type === "miles") {
-             total_miles += initialData[i].reward_amount;
-           } else if (initialData[i].reward_type === "points") {
-            total_points += initialData[i].reward_amount;
-           } else if (initialData[i].reward_type === "cashback") {
-            total_cashback += initialData[i].reward_amount;
-           }
-         }
-         setTotalMiles(total_miles);
-         setTotalPoints(total_points);
-         setTotalCashback(total_cashback);
 
-     }catch(error){
-         console.log(error.message);
-     }
-     }
-     sendRequest();
+         return response.json();
+}
+
+  //Load data
+ useEffect(() => {
+    
+     sendRequest().then(data=>{
+       const initialData = data.users_cards;
+      var total_miles = 0;
+      var total_points = 0;
+      var total_cashback = 0;
+      for (let i = 0; i< initialData.length;i++) {
+        if (initialData[i].reward_type === "miles") {
+          total_miles += initialData[i].reward_amount;
+        } else if (initialData[i].reward_type === "points") {
+        total_points += initialData[i].reward_amount;
+        } else if (initialData[i].reward_type === "cashback") {
+        total_cashback += initialData[i].reward_amount;
+        }
+      }
+      setTotalMiles(total_miles);
+      setTotalPoints(total_points);
+      setTotalCashback(total_cashback);
+
+     });
      
 },[initialData])
   return (

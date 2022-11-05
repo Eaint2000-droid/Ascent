@@ -48,9 +48,9 @@ function Home() {
             && currentdate.getMonth() <= end_campaign_date.getMonth()
             && currentdate.getDate() <= end_campaign_date.getDate()
             && currentdate.getFullYear() <= end_campaign_date.getFullYear()) {
-              console.log("Campaign is ongoing now!");
+              // console.log("Campaign is ongoing now!");
               setCurrentCampaign(initialData[i]);
-              console.log(currentCampaign);
+              // console.log(currentCampaign);
         }
       }
     })
