@@ -22,6 +22,7 @@ Showcase rewards accrued by users in the form of cashback, miles, and points in 
 - [Campaign Saving](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-campaign-saving): Function which saves a new campaign to the DB when added via the frontend by banks. Then it calls `Add new event`.
 - [Add new event](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-trigger-cron-job-in-eventbridge): Adds a new event in EventBridge and stores the campaign details. This EventBridge event will trigger when the campaign starts.
 - [Email alerts](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-emailAlerts): Function which sends alert emails upon a lambda failure or present of errors in lambda functions that is found in CloudWatch.
+- [Research output](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-research-output): Repo which contains the output and raw results that are mentioned or referenced in the research report.
 
 ## Frontend Screenshots
 
