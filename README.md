@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:5000) to view it in your browser.
 ## Deploying web application to Amplify 
 1. Sign in to the AWS Amplify console. 
 2. Connect to the "project-2022-23t1-g3-t5" github branch. 
-3. When writing the build settings, use amplify.yml located in the root source folder.
+3. When writing the build settings, use amplify.yml located in the /initial-app/frontend/amplify folder.
 4. Review your changes and then choose Save and deploy. The Amplify Console will pull code from your repository, build changes to frontend, and deploy your build artifacts.
 ## Links to other repos
 
