@@ -44,5 +44,14 @@ Open [http://localhost:3000](http://localhost:5000) to view it in your browser.
 
 <p float="left">
   <img src="initial-app/screenshots/Ascent_home.PNG" width="500">
-  <img src="initial-app/screenshots/Ascent_dashboard.PNG" width="500">
+</p>
+
+<p float="left">
+  <img src="initial-app/screenshots/Customer1.PNG" width="500">
+  <img src="initial-app/screenshots/customer2.PNG" width="500">
+</p>
+
+<p float="left">
+  <img src="initial-app/screenshots/bank1.PNG" width="500">
+  <img src="initial-app/screenshots/bank2.PNG" width="500">
 </p>
