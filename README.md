@@ -22,6 +22,20 @@ Open [http://localhost:3000](http://localhost:5000) to view it in your browser.
 2. Connect to the "project-2022-23t1-g3-t5" github branch. 
 3. When writing the build settings, use amplify.yml located in the /initial-app/frontend/amplify folder.
 4. Review your changes and then choose Save and deploy. The Amplify Console will pull code from your repository, build changes to frontend, and deploy your build artifacts.
+
+## Deploying other AWS services via GitHub
+
+### Lambda Functions
+1. Follow this [link](https://grrr.tech/posts/2021/github-actions-assume-role/) to configure a GitHub Token to allow GitHub Actions to deploy to AWS.
+2. Use AWS Severless Application Model (SAM) to run CI/CD pipelines for the repositories (view ./github/workflows/deploy.yml for basic references, while setting the environment variables).
+3. Set the respective GitHub Actions environment variables.
+4. Push the code to the repository and SAM will deploy the code to Lambda automatically.
+
+## Guide to setting up required AWS services
+
+### Aurora Database
+1. Use the AWS web console and spin up a multi-AZ instance using the guided steps provided by AWS.
+
 ## Links to other repos
 
 - [Database Initialisation scripts](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-database-initialisation): Code used to setup the database by populating them with necessary data such as MCC codes.
