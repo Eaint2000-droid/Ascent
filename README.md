@@ -9,6 +9,19 @@ Process millions of transactions with specific spending rules for different card
 Flexibly launch and manage marketing campaigns
 Showcase rewards accrued by users in the form of cashback, miles, and points in relation to their spending
 
+## Running the web application 
+### Amplify
+To view the deployed web application, open https://www.itsag3t5.com on your browser.
+
+### Development mode
+To run the frontend web application locally, cd initial-app/frontend before running the npm start command. 
+Open [http://localhost:3000](http://localhost:5000) to view it in your browser.
+
+## Deploying web application to Amplify 
+1. Sign in to the AWS Amplify console. 
+2. Connect to the "project-2022-23t1-g3-t5" github branch. 
+3. When writing the build settings, use amplify.yml located in the root source folder.
+4. Review your changes and then choose Save and deploy. The Amplify Console will pull code from your repository, build changes to frontend, and deploy your build artifacts.
 ## Links to other repos
 
 - [Database Initialisation scripts](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-database-initialisation): Code used to setup the database by populating them with necessary data such as MCC codes.
