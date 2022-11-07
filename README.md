@@ -23,6 +23,7 @@ Showcase rewards accrued by users in the form of cashback, miles, and points in 
 - [Add new event](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-trigger-cron-job-in-eventbridge): Adds a new event in EventBridge and stores the campaign details. This EventBridge event will trigger when the campaign starts.
 - [Email alerts](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-emailAlerts): Function which sends alert emails upon a lambda failure or present of errors in lambda functions that is found in CloudWatch.
 - [Research output](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-research-output): Repo which contains the output and raw results that are mentioned or referenced in the research report.
+- [Transfer Family](https://github.com/cs301-itsa/project-2022-23t1-g3-team5-transfer-family): Repository containing the instructions and details for using AWS Transfer Family in our project.
 
 ## Frontend Screenshots
 
