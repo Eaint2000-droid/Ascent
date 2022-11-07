@@ -45,13 +45,13 @@ Open [http://localhost:3000](http://localhost:5000) to view it in your browser.
   <img src="initial-app/screenshots/Ascent_home.PNG" width="500">
 </p>
 
-<p style="margin-top:10px">Customer Screens</p>
+### Customer Dashboard and Setting screen
 <p float="left">
   <img src="initial-app/screenshots/Customer1.PNG" width="500">
   <img src="initial-app/screenshots/customer2.PNG" width="500">
 </p>
 
-<p style="margin-top:10px">Bank Screens</p>
+### Bank Current campaign and Create new campaign screen
 <p float="left">
   <img src="initial-app/screenshots/bank1.PNG" width="500">
   <img src="initial-app/screenshots/bank2.PNG" width="500">
